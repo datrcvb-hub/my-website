@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>我的摄影世界</title>
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+
+body{
+font-family:Arial,"Microsoft YaHei",sans-serif;
+color:white;
+min-height:100vh;
+background:
+radial-gradient(circle at 15% 20%,rgba(14,165,233,.3),transparent 35%),
+radial-gradient(circle at 85% 75%,rgba(6,182,212,.2),transparent 35%),
+linear-gradient(135deg,#00111c,#082f49,#020617);
+}
+
+nav{
+position:sticky;
+top:0;
+z-index:999;
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:16px 6%;
+background:rgba(2,6,23,.8);
+backdrop-filter:blur(18px);
+border-bottom:1px solid rgba(255,255,255,.08);
+}
+
+.logo{
+font-size:20px;
+font-weight:bold;
+white-space:nowrap;
+}
+
+.nav-links{
+display:flex;
+gap:18px;
+overflow-x:auto;
+scrollbar-width:none;
+}
+
+.nav-links::-webkit-scrollbar{display:none}
+
+.nav-links a{
+color:#cbd5e1;
+text-decoration:none;
+font-size:14px;
+white-space:nowrap;
+transition:.3s;
+}
+
+.nav-links a:hover,
+.nav-links a.active{
+color:#67e8f9;
+}
+
+.hero{
+text-align:center;
+padding:90px 20px 50px;
+}
+
+.hero h1{
+font-size:clamp(45px,9vw,80px);
+margin-bottom:20px;
+background:linear-gradient(90deg,#fff,#67e8f9,#60a5fa);
+-webkit-background-clip:text;
+color:transparent;
+}
+
+.hero p{
+max-width:650px;
+margin:auto;
+color:#94a3b8;
+line-height:1.9;
+}
+
+.container{
+width:min(1100px,90%);
+margin:auto;
+}
+
+.stats{
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:18px;
+margin:30px 0 70px;
+}
+
+.stat{
+text-align:center;
+padding:25px;
+border-radius:20px;
+background:rgba(255,255,255,.05);
+border:1px solid rgba(255,255,255,.08);
+}
+
+.stat strong{
+display:block;
+font-size:35px;
+color:#67e8f9;
+}
+
+.stat span{
+color:#64748b;
+}
+
+.gallery{
+columns:3 250px;
+column-gap:18px;
+}
+
+.gallery img{
+width:100%;
+display:block;
+margin-bottom:18px;
+border-radius:18px;
+break-inside:avoid;
+transition:.4s;
+}
+
+.gallery img:hover{
+transform:scale(1.02);
+box-shadow:0 20px 40px rgba(0,0,0,.4);
+}
+
+.section{
+text-align:center;
+margin:80px 0 35px;
+}
+
+.section h2{
+font-size:35px;
+margin-bottom:10px;
+}
+
+.section p{
+color:#64748b;
+}
+
+.quote{
+padding:35px;
+border-radius:25px;
+background:rgba(255,255,255,.05);
+border:1px solid rgba(255,255,255,.08);
+text-align:center;
+color:#94a3b8;
+line-height:2;
+margin-bottom:70px;
+}
+
+.home{
+display:block;
+width:max-content;
+margin:60px auto;
+padding:13px 25px;
+border-radius:30px;
+text-decoration:none;
+color:white;
+background:linear-gradient(135deg,#0284c7,#0891b2);
+}
+
+@media(max-width:700px){
+.stats{grid-template-columns:1fr}
+nav{padding:14px 5%}
+}
+</style>
+</head>
+
+<body>
+
+<nav>
+<div class="logo">📷 摄影世界</div>
+
+<div class="nav-links">
+<a href="index.html">首页</a>
+<a href="game.html">🎮 游戏</a>
+<a href="photo.html" class="active">📷 摄影</a>
+<a href="movie.html">🎬 电影</a>
+<a href="music.html">🎵 音乐</a>
+<a href="coding.html">💻 编程</a>
+</div>
+</nav>
+
+<section class="hero">
+<h1>我的摄影世界</h1>
+<p>
+用镜头记录身边的风景，
+把普通的瞬间保存下来。
+</p>
+</section>
+
+<main class="container">
+
+<section class="stats">
+
+<div class="stat">
+<strong>20</strong>
+<span>摄影记录</span>
+</div>
+
+<div class="stat">
+<strong>4</strong>
+<span>摄影方向</span>
+</div>
+
+<div class="stat">
+<strong>100%</strong>
+<span>喜欢摄影</span>
+</div>
+
+</section>
+
+<div class="section">
+<h2>📸 我的照片</h2>
+<p>这里保存我的摄影记录</p>
+</div>
+
+<div class="gallery">
+<img src="images/photo1.jpg" alt="摄影作品">
+<img src="images/photo2.jpg" alt="摄影作品">
+<img src="images/photo3.jpg" alt="摄影作品">
+<img src="images/photo1.jpg" alt="摄影作品">
+<img src="images/photo2.jpg" alt="摄影作品">
+<img src="images/photo3.jpg" alt="摄影作品">
+</div>
+
+<div class="section">
+<h2>🌅 我的摄影想法</h2>
+</div>
+
+<div class="quote">
+摄影不一定要记录多么特别的地方。
+有时候，一束光、一片天空、
+一条街道，甚至一个普通的下午，
+都值得被记录下来。
+</div>
+
+<a href="index.html" class="home">
+← 返回我的兴趣世界
+</a>
+
+</main>
+
+</body>
+</html>

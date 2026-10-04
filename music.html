@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>我的音乐世界</title>
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+
+body{
+font-family:Arial,"Microsoft YaHei",sans-serif;
+color:white;
+min-height:100vh;
+background:
+radial-gradient(circle at 20% 20%,rgba(34,197,94,.25),transparent 35%),
+radial-gradient(circle at 80% 80%,rgba(139,92,246,.25),transparent 35%),
+linear-gradient(135deg,#02130a,#052e16,#1e1b4b);
+}
+
+nav{
+position:sticky;
+top:0;
+z-index:999;
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:16px 6%;
+background:rgba(2,6,23,.8);
+backdrop-filter:blur(18px);
+border-bottom:1px solid rgba(255,255,255,.08);
+}
+
+.logo{
+font-size:20px;
+font-weight:bold;
+white-space:nowrap;
+}
+
+.nav-links{
+display:flex;
+gap:18px;
+overflow-x:auto;
+scrollbar-width:none;
+}
+
+.nav-links::-webkit-scrollbar{display:none}
+
+.nav-links a{
+color:#cbd5e1;
+text-decoration:none;
+font-size:14px;
+white-space:nowrap;
+}
+
+.nav-links a:hover,
+.nav-links a.active{
+color:#86efac;
+}
+
+.hero{
+text-align:center;
+padding:80px 20px 50px;
+}
+
+.album{
+width:220px;
+height:220px;
+margin:auto auto 30px;
+border-radius:50%;
+overflow:hidden;
+border:5px solid rgba(255,255,255,.15);
+box-shadow:0 20px 60px rgba(0,0,0,.4);
+animation:rotate 15s linear infinite;
+}
+
+.album img{
+width:100%;
+height:100%;
+object-fit:cover;
+}
+
+@keyframes rotate{
+to{transform:rotate(360deg)}
+}
+
+.hero h1{
+font-size:clamp(45px,9vw,75px);
+margin-bottom:15px;
+background:linear-gradient(90deg,#fff,#86efac,#c4b5fd);
+-webkit-background-clip:text;
+color:transparent;
+}
+
+.hero p{
+color:#94a3b8;
+}
+
+.player{
+width:min(700px,90%);
+margin:30px auto 70px;
+padding:30px;
+border-radius:25px;
+background:rgba(255,255,255,.06);
+border:1px solid rgba(255,255,255,.08);
+}
+
+#title{
+font-size:24px;
+margin-bottom:5px;
+}
+
+#artist{
+color:#64748b;
+margin-bottom:25px;
+}
+
+input[type=range]{
+width:100%;
+accent-color:#22c55e;
+}
+
+.time{
+display:flex;
+justify-content:space-between;
+color:#64748b;
+font-size:13px;
+margin-top:7px;
+}
+
+.controls{
+display:flex;
+justify-content:center;
+align-items:center;
+gap:20px;
+margin:25px 0;
+}
+
+.controls button{
+width:50px;
+height:50px;
+border:0;
+border-radius:50%;
+color:white;
+background:rgba(255,255,255,.08);
+font-size:18px;
+}
+
+.controls .play{
+width:65px;
+height:65px;
+background:linear-gradient(135deg,#16a34a,#22c55e);
+}
+
+.playlist{
+margin-top:20px;
+}
+
+.song{
+padding:15px;
+margin-top:8px;
+border-radius:12px;
+cursor:pointer;
+color:#94a3b8;
+background:rgba(255,255,255,.04);
+}
+
+.song.active{
+color:white;
+background:rgba(34,197,94,.12);
+}
+
+.equalizer{
+display:flex;
+justify-content:center;
+gap:5px;
+height:30px;
+margin:15px;
+}
+
+.bar{
+width:5px;
+height:10px;
+border-radius:5px;
+background:#22c55e;
+animation:eq .7s infinite alternate;
+}
+
+.bar:nth-child(2){animation-delay:.1s}
+.bar:nth-child(3){animation-delay:.2s}
+.bar:nth-child(4){animation-delay:.3s}
+.bar:nth-child(5){animation-delay:.4s}
+
+@keyframes eq{
+to{height:28px}
+}
+
+.section{
+text-align:center;
+margin:70px 0 30px;
+}
+
+.section h2{
+font-size:35px;
+}
+
+.about{
+width:min(900px,90%);
+margin:auto;
+padding:35px;
+border-radius:25px;
+background:rgba(255,255,255,.05);
+border:1px solid rgba(255,255,255,.08);
+color:#94a3b8;
+line-height:2;
+margin-bottom:70px;
+}
+
+.home{
+display:block;
+width:max-content;
+margin:50px auto;
+padding:13px 25px;
+border-radius:30px;
+text-decoration:none;
+color:white;
+background:linear-gradient(135deg,#16a34a,#7c3aed);
+}
+
+@media(max-width:600px){
+nav{padding:14px 5%}
+.album{
+width:180px;
+height:180px;
+}
+}
+</style>
+</head>
+
+<body>
+
+<nav>
+<div class="logo">🎵 音乐世界</div>
+
+<div class="nav-links">
+<a href="index.html">首页</a>
+<a href="game.html">🎮 游戏</a>
+<a href="photo.html">📷 摄影</a>
+<a href="movie.html">🎬 电影</a>
+<a href="music.html" class="active">🎵 音乐</a>
+<a href="coding.html">💻 编程</a>
+</div>
+</nav>
+
+<section class="hero">
+
+<div class="album">
+<img src="images/music1.jpg" alt="音乐">
+</div>
+
+<h1>我的音乐世界</h1>
+<p>让音乐成为每天的一部分。</p>
+
+</section>
+
+<section class="player">
+
+<div id="title">我的第一首歌</div>
+<div id="artist">我的音乐收藏</div>
+
+<input id="progress" type="range" min="0" max="100" value="0">
+
+<div class="time">
+<span id="current">0:00</span>
+<span id="duration">0:00</span>
+</div>
+
+<div class="controls">
+<button id="prev">⏮</button>
+<button id="play" class="play">▶</button>
+<button id="next">⏭</button>
+</div>
+
+<div class="equalizer">
+<div class="bar"></div>
+<div class="bar"></div>
+<div class="bar"></div>
+<div class="bar"></div>
+<div class="bar"></div>
+</div>
+
+<div class="playlist" id="playlist"></div>
+
+<audio id="audio"></audio>
+
+</section>
+
+<div class="section">
+<h2>🎧 关于我的音乐</h2>
+</div>
+
+<div class="about">
+音乐对我来说，不只是声音。
+它可以陪伴学习、休息、旅行，
+也可以让普通的一天拥有自己的节奏。
+以后我会继续把喜欢的音乐记录在这里。
+</div>
+
+<a href="index.html" class="home">
+← 返回我的兴趣世界
+</a>
+
+<script>
+
+const songs=[
+{
+title:"我的第一首歌",
+artist:"我的音乐收藏",
+src:"music/song1.mp3"
+},
+{
+title:"第二首歌",
+artist:"我的音乐收藏",
+src:"music/song2.mp3"
+}
+];
+
+let index=0;
+
+const audio=document.getElementById("audio");
+const play=document.getElementById("play");
+const progress=document.getElementById("progress");
+const title=document.getElementById("title");
+const artist=document.getElementById("artist");
+const current=document.getElementById("current");
+const duration=document.getElementById("duration");
+const playlist=document.getElementById("playlist");
+
+function loadSong(){
+
+const song=songs[index];
+
+title.textContent=song.title;
+artist.textContent=song.artist;
+audio.src=song.src;
+
+playlist.innerHTML="";
+
+songs.forEach((song,i)=>{
+
+const div=document.createElement("div");
+
+div.className="song"+(i===index?" active":"");
+
+div.textContent=(i+1)+" · "+song.title;
+
+div.onclick=()=>{
+index=i;
+loadSong();
+audio.play();
+play.textContent="⏸";
+};
+
+playlist.appendChild(div);
+
+});
+
+}
+
+loadSong();
+
+play.onclick=()=>{
+
+if(audio.paused){
+audio.play();
+play.textContent="⏸";
+}else{
+audio.pause();
+play.textContent="▶";
+}
+
+};
+
+document.getElementById("prev").onclick=()=>{
+index=(index-1+songs.length)%songs.length;
+loadSong();
+audio.play();
+play.textContent="⏸";
+};
+
+document.getElementById("next").onclick=()=>{
+index=(index+1)%songs.length;
+loadSong();
+audio.play();
+play.textContent="⏸";
+};
+
+audio.addEventListener("timeupdate",()=>{
+
+if(audio.duration){
+
+progress.value=(audio.currentTime/audio.duration)*100;
+
+current.textContent=format(audio.currentTime);
+duration.textContent=format(audio.duration);
+
+}
+
+});
+
+progress.oninput=()=>{
+audio.currentTime=(progress.value/100)*audio.duration;
+};
+
+audio.onended=()=>{
+index=(index+1)%songs.length;
+loadSong();
+audio.play();
+};
+
+function format(seconds){
+
+if(isNaN(seconds))return"0:00";
+
+const m=Math.floor(seconds/60);
+
+const s=Math.floor(seconds%60)
+.toString()
+.padStart(2,"0");
+
+return m+":"+s;
+}
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,2468 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+>
+
+<title>tao的兴趣世界</title>
+
+<style>
+
+/* =========================
+   基础
+========================= */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    min-height:100vh;
+
+    color:white;
+
+    font-family:
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        "Microsoft YaHei",
+        sans-serif;
+
+    background:
+        radial-gradient(
+            circle at 20% 20%,
+            rgba(99,102,241,.28),
+            transparent 30%
+        ),
+        radial-gradient(
+            circle at 80% 30%,
+            rgba(168,85,247,.20),
+            transparent 30%
+        ),
+        radial-gradient(
+            circle at 50% 90%,
+            rgba(14,165,233,.16),
+            transparent 30%
+        ),
+        #050816;
+
+    overflow-x:hidden;
+}
+
+
+/* =========================
+   动态背景
+========================= */
+
+.background{
+    position:fixed;
+
+    inset:0;
+
+    z-index:-5;
+
+    overflow:hidden;
+}
+
+.glow{
+    position:absolute;
+
+    width:400px;
+    height:400px;
+
+    border-radius:50%;
+
+    filter:blur(80px);
+
+    opacity:.35;
+
+    animation:
+        floatGlow
+        12s
+        infinite
+        alternate
+        ease-in-out;
+}
+
+.glow.one{
+    background:#6366f1;
+
+    top:-100px;
+    left:-100px;
+}
+
+.glow.two{
+    background:#a855f7;
+
+    right:-120px;
+    top:25%;
+
+    animation-delay:2s;
+}
+
+.glow.three{
+    background:#06b6d4;
+
+    bottom:-150px;
+    left:30%;
+
+    animation-delay:4s;
+}
+
+@keyframes floatGlow{
+
+    from{
+        transform:
+            translate(0,0)
+            scale(1);
+    }
+
+    to{
+        transform:
+            translate(100px,80px)
+            scale(1.25);
+    }
+
+}
+
+#particles{
+    position:fixed;
+
+    inset:0;
+
+    width:100%;
+    height:100%;
+
+    z-index:-4;
+
+    pointer-events:none;
+}
+
+
+/* =========================
+   导航
+========================= */
+
+nav{
+    position:sticky;
+
+    top:0;
+
+    z-index:100;
+
+    width:100%;
+
+    background:
+        rgba(5,8,22,.65);
+
+    backdrop-filter:blur(18px);
+
+    -webkit-backdrop-filter:blur(18px);
+
+    border-bottom:
+        1px solid
+        rgba(255,255,255,.08);
+}
+
+.nav-inner{
+    max-width:1200px;
+
+    margin:auto;
+
+    min-height:70px;
+
+    padding:
+        0 20px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+    gap:20px;
+}
+
+.logo{
+    font-size:20px;
+
+    font-weight:800;
+
+    background:
+        linear-gradient(
+            90deg,
+            #818cf8,
+            #c084fc,
+            #22d3ee
+        );
+
+    -webkit-background-clip:text;
+
+    background-clip:text;
+
+    color:transparent;
+
+    white-space:nowrap;
+}
+
+.nav-links{
+    display:flex;
+
+    gap:8px;
+
+    flex-wrap:wrap;
+
+    justify-content:flex-end;
+}
+
+.nav-links a{
+    position:relative;
+
+    color:#cbd5e1;
+
+    text-decoration:none;
+
+    padding:
+        10px 13px;
+
+    border-radius:12px;
+
+    font-size:14px;
+
+    transition:.3s;
+}
+
+.nav-links a:hover{
+    color:white;
+
+    background:
+        rgba(255,255,255,.08);
+}
+
+.nav-links a.active{
+    color:white;
+
+    background:
+        rgba(99,102,241,.18);
+}
+
+.nav-links a.active::after{
+
+    content:"";
+
+    position:absolute;
+
+    left:20%;
+    right:20%;
+
+    bottom:4px;
+
+    height:2px;
+
+    background:#818cf8;
+
+    border-radius:10px;
+}
+
+
+/* =========================
+   通用
+========================= */
+
+.container{
+    width:min(
+        1100px,
+        92%
+    );
+
+    margin:auto;
+}
+
+section{
+    padding:
+        100px 0;
+}
+
+.section-title{
+    text-align:center;
+
+    margin-bottom:45px;
+}
+
+.section-title h2{
+    font-size:36px;
+
+    margin-bottom:10px;
+}
+
+.section-title p{
+    color:#94a3b8;
+}
+
+
+/* =========================
+   Hero
+========================= */
+
+.hero{
+    min-height:
+        calc(100vh - 70px);
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    text-align:center;
+
+    padding:
+        70px 20px;
+}
+
+.hero-content{
+    max-width:850px;
+}
+
+.status{
+
+    display:inline-flex;
+
+    align-items:center;
+
+    gap:8px;
+
+    padding:
+        8px 15px;
+
+    border:
+        1px solid
+        rgba(129,140,248,.3);
+
+    background:
+        rgba(99,102,241,.08);
+
+    border-radius:50px;
+
+    color:#c7d2fe;
+
+    font-size:14px;
+
+    margin-bottom:28px;
+}
+
+.status-dot{
+
+    width:8px;
+    height:8px;
+
+    background:#22c55e;
+
+    border-radius:50%;
+
+    box-shadow:
+        0 0 12px
+        #22c55e;
+
+    animation:
+        pulse
+        1.5s
+        infinite;
+}
+
+@keyframes pulse{
+
+    50%{
+        opacity:.3;
+
+        transform:
+            scale(.7);
+    }
+
+}
+
+
+/* =========================
+   头像
+========================= */
+
+.avatar-box{
+
+    width:150px;
+    height:150px;
+
+    margin:
+        0 auto 30px;
+
+    border-radius:50%;
+
+    padding:5px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #818cf8,
+            #c084fc,
+            #22d3ee
+        );
+
+    box-shadow:
+        0 0 40px
+        rgba(129,140,248,.35);
+
+    animation:
+        avatarFloat
+        4s
+        infinite
+        ease-in-out;
+}
+
+.avatar-box img{
+
+    width:100%;
+    height:100%;
+
+    border-radius:50%;
+
+    object-fit:cover;
+
+    display:block;
+
+    background:#111827;
+}
+
+@keyframes avatarFloat{
+
+    50%{
+        transform:
+            translateY(-10px);
+    }
+
+}
+
+
+/* =========================
+   标题
+========================= */
+
+.hero h1{
+
+    font-size:
+        clamp(
+            45px,
+            8vw,
+            82px
+        );
+
+    line-height:1.05;
+
+    font-weight:900;
+
+    background:
+        linear-gradient(
+            90deg,
+            #fff,
+            #c7d2fe,
+            #e9d5ff,
+            #a5f3fc
+        );
+
+    -webkit-background-clip:text;
+
+    background-clip:text;
+
+    color:transparent;
+
+    margin-bottom:25px;
+}
+
+.typing{
+
+    min-height:35px;
+
+    color:#a5b4fc;
+
+    font-size:21px;
+
+    font-weight:600;
+
+    margin-bottom:22px;
+}
+
+.cursor{
+    animation:
+        blink
+        .7s
+        infinite;
+}
+
+@keyframes blink{
+
+    50%{
+        opacity:0;
+    }
+
+}
+
+.hero-description{
+
+    color:#94a3b8;
+
+    max-width:650px;
+
+    margin:auto;
+
+    line-height:1.9;
+
+    font-size:16px;
+}
+
+
+/* =========================
+   按钮
+========================= */
+
+.buttons{
+
+    margin-top:35px;
+
+    display:flex;
+
+    justify-content:center;
+
+    gap:15px;
+
+    flex-wrap:wrap;
+}
+
+.btn{
+
+    display:inline-flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    padding:
+        13px 24px;
+
+    border-radius:14px;
+
+    text-decoration:none;
+
+    color:white;
+
+    font-weight:700;
+
+    border:
+        1px solid
+        rgba(255,255,255,.1);
+
+    background:
+        rgba(255,255,255,.06);
+
+    backdrop-filter:blur(10px);
+
+    transition:.3s;
+
+    cursor:pointer;
+}
+
+.btn.primary{
+
+    background:
+        linear-gradient(
+            135deg,
+            #6366f1,
+            #8b5cf6
+        );
+
+    box-shadow:
+        0 10px 30px
+        rgba(99,102,241,.25);
+}
+
+.btn:hover{
+
+    transform:
+        translateY(-4px);
+
+    box-shadow:
+        0 15px 35px
+        rgba(0,0,0,.25);
+}
+
+.btn.pressed{
+
+    transform:
+        scale(.95);
+}
+
+
+/* =========================
+   社交
+========================= */
+
+.social{
+
+    margin-top:25px;
+
+    display:flex;
+
+    justify-content:center;
+
+    flex-wrap:wrap;
+
+    gap:10px;
+}
+
+.social a{
+
+    color:#cbd5e1;
+
+    text-decoration:none;
+
+    padding:
+        9px 14px;
+
+    border-radius:12px;
+
+    background:
+        rgba(255,255,255,.04);
+
+    border:
+        1px solid
+        rgba(255,255,255,.07);
+
+    transition:.3s;
+}
+
+.social a:hover{
+
+    color:white;
+
+    background:
+        rgba(255,255,255,.1);
+
+    transform:
+        translateY(-3px);
+}
+
+
+/* =========================
+   关于
+========================= */
+
+.about{
+
+    display:grid;
+
+    grid-template-columns:
+        1fr 1fr;
+
+    gap:25px;
+}
+
+.about-box{
+
+    padding:30px;
+
+    border-radius:22px;
+
+    background:
+        rgba(255,255,255,.045);
+
+    border:
+        1px solid
+        rgba(255,255,255,.08);
+
+    backdrop-filter:blur(15px);
+
+    transition:.35s;
+}
+
+.about-box:hover{
+
+    transform:
+        translateY(-6px);
+
+    border-color:
+        rgba(129,140,248,.35);
+}
+
+.about-box h3{
+
+    font-size:22px;
+
+    margin-bottom:15px;
+}
+
+.about-box p{
+
+    color:#94a3b8;
+
+    line-height:1.9;
+}
+
+
+/* =========================
+   兴趣卡片
+========================= */
+
+.interests{
+
+    display:grid;
+
+    grid-template-columns:
+        repeat(5,1fr);
+
+    gap:18px;
+}
+
+.card{
+
+    position:relative;
+
+    min-height:230px;
+
+    padding:25px;
+
+    border-radius:22px;
+
+    overflow:hidden;
+
+    text-decoration:none;
+
+    color:white;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255,255,255,.08),
+            rgba(255,255,255,.025)
+        );
+
+    border:
+        1px solid
+        rgba(255,255,255,.09);
+
+    backdrop-filter:blur(14px);
+
+    transition:.4s;
+
+    --mx:50%;
+    --my:50%;
+}
+
+.card::before{
+
+    content:"";
+
+    position:absolute;
+
+    inset:0;
+
+    background:
+        radial-gradient(
+            circle at
+            var(--mx)
+            var(--my),
+            rgba(129,140,248,.25),
+            transparent 35%
+        );
+
+    opacity:0;
+
+    transition:.3s;
+
+    pointer-events:none;
+}
+
+.card:hover::before{
+    opacity:1;
+}
+
+.card:hover{
+
+    transform:
+        translateY(-10px)
+        scale(1.02);
+
+    border-color:
+        rgba(129,140,248,.4);
+
+    box-shadow:
+        0 20px 50px
+        rgba(0,0,0,.3);
+}
+
+.card-content{
+
+    position:relative;
+
+    z-index:2;
+}
+
+.card-icon{
+
+    font-size:40px;
+
+    margin-bottom:25px;
+}
+
+.card h3{
+
+    font-size:21px;
+
+    margin-bottom:8px;
+}
+
+.card p{
+
+    color:#94a3b8;
+
+    font-size:14px;
+
+    line-height:1.7;
+}
+
+.card-arrow{
+
+    position:absolute;
+
+    right:22px;
+
+    bottom:20px;
+
+    color:#818cf8;
+
+    font-size:20px;
+}
+
+
+/* =========================
+   统计
+========================= */
+
+.stats{
+
+    display:grid;
+
+    grid-template-columns:
+        repeat(4,1fr);
+
+    gap:18px;
+}
+
+.stat{
+
+    padding:
+        30px 20px;
+
+    text-align:center;
+
+    border-radius:20px;
+
+    background:
+        rgba(255,255,255,.045);
+
+    border:
+        1px solid
+        rgba(255,255,255,.08);
+
+    transition:.35s;
+}
+
+.stat:hover{
+
+    transform:
+        translateY(-6px);
+}
+
+.number{
+
+    font-size:42px;
+
+    font-weight:900;
+
+    background:
+        linear-gradient(
+            90deg,
+            #818cf8,
+            #c084fc
+        );
+
+    -webkit-background-clip:text;
+
+    background-clip:text;
+
+    color:transparent;
+}
+
+.stat p{
+
+    color:#94a3b8;
+
+    margin-top:8px;
+}
+
+
+/* =========================
+   时间线
+========================= */
+
+.timeline{
+
+    max-width:750px;
+
+    margin:auto;
+}
+
+.timeline-item{
+
+    position:relative;
+
+    padding:
+        0 0 35px 35px;
+
+    border-left:
+        1px solid
+        rgba(129,140,248,.35);
+}
+
+.timeline-item::before{
+
+    content:"";
+
+    position:absolute;
+
+    width:10px;
+    height:10px;
+
+    border-radius:50%;
+
+    background:#818cf8;
+
+    left:-5px;
+
+    top:5px;
+
+    box-shadow:
+        0 0 15px
+        #818cf8;
+}
+
+.timeline-item h3{
+
+    margin-bottom:8px;
+}
+
+.timeline-item p{
+
+    color:#94a3b8;
+
+    line-height:1.7;
+}
+
+
+/* =========================
+   滚动动画
+========================= */
+
+.reveal{
+
+    opacity:0;
+
+    transform:
+        translateY(35px);
+
+    transition:
+        opacity .8s ease,
+        transform .8s ease;
+}
+
+.reveal.visible{
+
+    opacity:1;
+
+    transform:
+        translateY(0);
+}
+
+
+/* =========================
+   返回顶部
+========================= */
+
+#top{
+
+    position:fixed;
+
+    right:22px;
+
+    bottom:22px;
+
+    width:48px;
+    height:48px;
+
+    border:none;
+
+    border-radius:50%;
+
+    background:
+        linear-gradient(
+            135deg,
+            #6366f1,
+            #8b5cf6
+        );
+
+    color:white;
+
+    font-size:20px;
+
+    cursor:pointer;
+
+    opacity:0;
+
+    pointer-events:none;
+
+    transform:
+        translateY(20px);
+
+    transition:.3s;
+
+    box-shadow:
+        0 10px 30px
+        rgba(99,102,241,.3);
+
+    z-index:50;
+}
+
+#top.show{
+
+    opacity:1;
+
+    pointer-events:auto;
+
+    transform:
+        translateY(0);
+}
+
+
+/* =========================
+   页脚
+========================= */
+
+footer{
+
+    padding:
+        50px 20px;
+
+    text-align:center;
+
+    border-top:
+        1px solid
+        rgba(255,255,255,.07);
+
+    color:#64748b;
+}
+
+
+/* =========================
+   手机适配
+========================= */
+
+@media(max-width:900px){
+
+    .nav-inner{
+
+        flex-direction:column;
+
+        padding:15px;
+    }
+
+    .nav-links{
+
+        justify-content:center;
+    }
+
+    .interests{
+
+        grid-template-columns:
+            repeat(2,1fr);
+    }
+
+    .stats{
+
+        grid-template-columns:
+            repeat(2,1fr);
+    }
+
+    .about{
+
+        grid-template-columns:1fr;
+    }
+
+    .hero{
+
+        min-height:auto;
+
+        padding-top:80px;
+    }
+
+}
+
+
+@media(max-width:600px){
+
+    section{
+
+        padding:70px 0;
+    }
+
+    .nav-links a{
+
+        font-size:12px;
+
+        padding:
+            8px 9px;
+    }
+
+    .logo{
+
+        font-size:18px;
+    }
+
+    .avatar-box{
+
+        width:120px;
+        height:120px;
+    }
+
+    .typing{
+
+        font-size:17px;
+    }
+
+    .hero-description{
+
+        font-size:14px;
+    }
+
+    .interests{
+
+        grid-template-columns:1fr;
+    }
+
+    .stats{
+
+        grid-template-columns:
+            1fr 1fr;
+    }
+
+    .number{
+
+        font-size:32px;
+    }
+
+    .section-title h2{
+
+        font-size:28px;
+    }
+
+}
+
+
+@media(prefers-reduced-motion:reduce){
+
+    *,
+    *::before,
+    *::after{
+
+        animation:none !important;
+
+        transition:none !important;
+
+        scroll-behavior:auto !important;
+    }
+
+    .reveal{
+
+        opacity:1;
+
+        transform:none;
+    }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<!-- =========================
+     动态背景
+========================= -->
+
+<div class="background">
+
+    <div class="glow one"></div>
+
+    <div class="glow two"></div>
+
+    <div class="glow three"></div>
+
+</div>
+
+
+<canvas id="particles"></canvas>
+
+
+<!-- =========================
+     导航
+========================= -->
+
+<nav>
+
+    <div class="nav-inner">
+
+        <div class="logo">
+            tao的兴趣世界
+        </div>
+
+
+        <div class="nav-links">
+
+            <a
+                href="index.html"
+                class="active"
+            >
+                首页
+            </a>
+
+            <a href="game.html">
+                🎮 游戏
+            </a>
+
+            <a href="photo.html">
+                📷 摄影
+            </a>
+
+            <a href="movie.html">
+                🎬 电影
+            </a>
+
+            <a href="music.html">
+                🎵 音乐
+            </a>
+
+            <a href="coding.html">
+                💻 编程
+            </a>
+
+        </div>
+
+    </div>
+
+</nav>
+
+
+<!-- =========================
+     Hero
+========================= -->
+
+<header class="hero">
+
+    <div class="hero-content">
+
+
+        <div class="status">
+
+            <span class="status-dot"></span>
+
+            正在探索这个世界
+
+        </div>
+
+
+        <!-- 头像 -->
+
+        <div class="avatar-box">
+
+            <img
+                src="images/avatar.jpg"
+                alt="我的头像"
+                onerror="this.style.display='none'"
+            >
+
+        </div>
+
+
+        <h1>
+            tao的兴趣世界
+        </h1>
+
+
+        <div class="typing">
+
+            <span id="typing"></span>
+
+            <span class="cursor">
+                |
+            </span>
+
+        </div>
+
+
+        <p class="hero-description">
+
+            游戏、摄影、电影、音乐与编程，
+            这里记录我的兴趣，
+            也记录我不断探索世界的过程。
+
+        </p>
+
+
+        <div class="buttons">
+
+            <a
+                href="#interests"
+                class="btn primary"
+            >
+                开始探索 →
+            </a>
+
+
+            <a
+                href="#about"
+                class="btn"
+            >
+                关于我
+            </a>
+
+        </div>
+
+
+        <!-- 社交按钮 -->
+
+        <div class="social">
+
+            <a href="#">
+                🐙 GitHub
+            </a>
+
+            <a href="#">
+                📕 知乎
+            </a>
+
+            <a href="#">
+                🌐 微博
+            </a>
+
+            <a href="mailto:">
+                ✉️ 邮箱
+            </a>
+
+        </div>
+
+    </div>
+
+</header>
+
+
+<!-- =========================
+     关于
+========================= -->
+
+<section id="about">
+
+    <div class="container">
+
+
+        <div class="section-title reveal">
+
+            <h2>
+                关于这个网站
+            </h2>
+
+            <p>
+                一个属于我的数字空间
+            </p>
+
+        </div>
+
+
+        <div class="about">
+
+
+            <div class="about-box reveal">
+
+                <h3>
+                    🌌 我的世界
+                </h3>
+
+                <p>
+
+                    这里不是一个普通的网站。
+                    它是我学习、记录和分享兴趣的地方。
+                    从游戏到摄影，从电影到音乐，
+                    再到我正在学习的编程。
+
+                </p>
+
+            </div>
+
+
+            <div class="about-box reveal">
+
+                <h3>
+                    🚀 我的目标
+                </h3>
+
+                <p>
+
+                    从零开始学习 HTML、CSS 和 JavaScript，
+                    最终能够独立制作真正属于自己的项目。
+
+                </p>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     兴趣
+========================= -->
+
+<section id="interests">
+
+    <div class="container">
+
+
+        <div class="section-title reveal">
+
+            <h2>
+                我的兴趣
+            </h2>
+
+            <p>
+                点击进入不同的世界
+            </p>
+
+        </div>
+
+
+        <div class="interests">
+
+
+            <a
+                href="game.html"
+                class="card reveal"
+            >
+
+                <div class="card-content">
+
+                    <div class="card-icon">
+                        🎮
+                    </div>
+
+                    <h3>
+                        游戏
+                    </h3>
+
+                    <p>
+                        Minecraft、原神、
+                        王者荣耀等游戏记录。
+                    </p>
+
+                </div>
+
+                <div class="card-arrow">
+                    →
+                </div>
+
+            </a>
+
+
+            <a
+                href="photo.html"
+                class="card reveal"
+            >
+
+                <div class="card-content">
+
+                    <div class="card-icon">
+                        📷
+                    </div>
+
+                    <h3>
+                        摄影
+                    </h3>
+
+                    <p>
+                        用照片记录生活，
+                        发现平凡世界里的美。
+                    </p>
+
+                </div>
+
+                <div class="card-arrow">
+                    →
+                </div>
+
+            </a>
+
+
+            <a
+                href="movie.html"
+                class="card reveal"
+            >
+
+                <div class="card-content">
+
+                    <div class="card-icon">
+                        🎬
+                    </div>
+
+                    <h3>
+                        电影
+                    </h3>
+
+                    <p>
+                        记录看过的电影，
+                        分享自己的观影感受。
+                    </p>
+
+                </div>
+
+                <div class="card-arrow">
+                    →
+                </div>
+
+            </a>
+
+
+            <a
+                href="music.html"
+                class="card reveal"
+            >
+
+                <div class="card-content">
+
+                    <div class="card-icon">
+                        🎵
+                    </div>
+
+                    <h3>
+                        音乐
+                    </h3>
+
+                    <p>
+                        收藏喜欢的音乐，
+                        让音乐陪伴每一个时刻。
+                    </p>
+
+                </div>
+
+                <div class="card-arrow">
+                    →
+                </div>
+
+            </a>
+
+
+            <a
+                href="coding.html"
+                class="card reveal"
+            >
+
+                <div class="card-content">
+
+                    <div class="card-icon">
+                        💻
+                    </div>
+
+                    <h3>
+                        编程
+                    </h3>
+
+                    <p>
+                        从零开始学习编程，
+                        一步一步创造自己的项目。
+                    </p>
+
+                </div>
+
+                <div class="card-arrow">
+                    →
+                </div>
+
+            </a>
+
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     数据
+========================= -->
+
+<section>
+
+    <div class="container">
+
+
+        <div class="section-title reveal">
+
+            <h2>
+                我的数据
+            </h2>
+
+            <p>
+                兴趣正在不断增加
+            </p>
+
+        </div>
+
+
+        <div class="stats">
+
+
+            <div class="stat reveal">
+
+                <div
+                    class="number counter"
+                    data-target="5"
+                >
+                    0
+                </div>
+
+                <p>
+                    兴趣方向
+                </p>
+
+            </div>
+
+
+            <div class="stat reveal">
+
+                <div
+                    class="number counter"
+                    data-target="20"
+                >
+                    0
+                </div>
+
+                <p>
+                    摄影记录
+                </p>
+
+            </div>
+
+
+            <div class="stat reveal">
+
+                <div
+                    class="number counter"
+                    data-target="30"
+                >
+                    0
+                </div>
+
+                <p>
+                    电影记录
+                </p>
+
+            </div>
+
+
+            <div class="stat reveal">
+
+                <div
+                    class="number counter"
+                    data-target="3"
+                >
+                    0
+                </div>
+
+                <p>
+                    编程项目
+                </p>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     成长时间线
+========================= -->
+
+<section>
+
+    <div class="container">
+
+
+        <div class="section-title reveal">
+
+            <h2>
+                我的成长记录
+            </h2>
+
+            <p>
+                从零开始，一步一步
+            </p>
+
+        </div>
+
+
+        <div class="timeline">
+
+
+            <div class="timeline-item reveal">
+
+                <h3>
+                    🌱 开始接触网页
+                </h3>
+
+                <p>
+
+                    从完全不了解网页开发开始，
+                    第一次认识 HTML。
+
+                </p>
+
+            </div>
+
+
+            <div class="timeline-item reveal">
+
+                <h3>
+                    🎨 学习 CSS
+                </h3>
+
+                <p>
+
+                    开始让网页拥有颜色、
+                    动画、布局和自己的风格。
+
+                </p>
+
+            </div>
+
+
+            <div class="timeline-item reveal">
+
+                <h3>
+                    ⚡ 学习 JavaScript
+                </h3>
+
+                <p>
+
+                    让网页真正开始“动起来”，
+                    加入交互和动态效果。
+
+                </p>
+
+            </div>
+
+
+            <div class="timeline-item reveal">
+
+                <h3>
+                    🚀 创造自己的项目
+                </h3>
+
+                <p>
+
+                    未来希望制作更多真正属于自己的项目。
+
+                </p>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     页脚
+========================= -->
+
+<footer>
+
+    <p>
+        © 2026 我的兴趣世界
+    </p>
+
+    <p style="margin-top:8px;">
+        Made with ❤️ and Code
+    </p>
+
+</footer>
+
+
+<!-- 返回顶部 -->
+
+<button id="top">
+    ↑
+</button>
+
+
+<!-- ==================================================
+     这里就是 script.js 的链接
+================================================== -->
+
+<script src="script.js"></script>
+
+
+<!-- ==================================================
+     首页专用 JavaScript
+================================================== -->
+
+<script>
+
+/* =========================
+   打字机
+========================= */
+
+const typingElement =
+    document.getElementById("typing");
+
+const texts = [
+
+    "探索游戏的世界 🎮",
+
+    "用摄影记录生活 📷",
+
+    "发现电影里的故事 🎬",
+
+    "让音乐陪伴生活 🎵",
+
+    "用代码创造未来 💻"
+
+];
+
+let textIndex = 0;
+
+let charIndex = 0;
+
+let deleting = false;
+
+
+function typeWriter(){
+
+    const current =
+        texts[textIndex];
+
+
+    if(!deleting){
+
+        typingElement.textContent =
+            current.substring(
+                0,
+                charIndex + 1
+            );
+
+        charIndex++;
+
+
+        if(
+            charIndex ===
+            current.length
+        ){
+
+            deleting = true;
+
+            setTimeout(
+                typeWriter,
+                1800
+            );
+
+            return;
+        }
+
+
+    }else{
+
+        typingElement.textContent =
+            current.substring(
+                0,
+                charIndex - 1
+            );
+
+        charIndex--;
+
+
+        if(charIndex === 0){
+
+            deleting = false;
+
+            textIndex =
+                (
+                    textIndex + 1
+                )
+                %
+                texts.length;
+
+        }
+
+    }
+
+
+    setTimeout(
+        typeWriter,
+        deleting
+            ? 45
+            : 80
+    );
+
+}
+
+
+typeWriter();
+
+
+/* =========================
+   首页滚动动画
+========================= */
+
+const revealElements =
+    document.querySelectorAll(
+        ".reveal"
+    );
+
+
+const revealObserver =
+    new IntersectionObserver(
+        entries => {
+
+            entries.forEach(
+                entry => {
+
+                    if(
+                        entry.isIntersecting
+                    ){
+
+                        entry.target
+                            .classList
+                            .add(
+                                "visible"
+                            );
+
+                    }
+
+                }
+            );
+
+        },
+        {
+            threshold:.12
+        }
+    );
+
+
+revealElements.forEach(
+    element => {
+
+        revealObserver.observe(
+            element
+        );
+
+    }
+);
+
+
+/* =========================
+   数字动画
+========================= */
+
+const counters =
+    document.querySelectorAll(
+        ".counter"
+    );
+
+
+const counterObserver =
+    new IntersectionObserver(
+        entries => {
+
+            entries.forEach(
+                entry => {
+
+                    if(
+                        !entry.isIntersecting
+                    ){
+                        return;
+                    }
+
+
+                    const counter =
+                        entry.target;
+
+
+                    if(
+                        counter.dataset.done
+                    ){
+                        return;
+                    }
+
+
+                    counter.dataset.done =
+                        "true";
+
+
+                    const target =
+                        Number(
+                            counter.dataset.target
+                        );
+
+
+                    const duration =
+                        1200;
+
+
+                    const startTime =
+                        performance.now();
+
+
+                    function update(time){
+
+                        const progress =
+                            Math.min(
+                                (
+                                    time -
+                                    startTime
+                                )
+                                /
+                                duration,
+                                1
+                            );
+
+
+                        const eased =
+                            1 -
+                            Math.pow(
+                                1 -
+                                progress,
+                                3
+                            );
+
+
+                        counter.textContent =
+                            Math.floor(
+                                target *
+                                eased
+                            );
+
+
+                        if(
+                            progress < 1
+                        ){
+
+                            requestAnimationFrame(
+                                update
+                            );
+
+                        }else{
+
+                            counter.textContent =
+                                target;
+
+                        }
+
+                    }
+
+
+                    requestAnimationFrame(
+                        update
+                    );
+
+                }
+            );
+
+        },
+        {
+            threshold:.5
+        }
+    );
+
+
+counters.forEach(
+    counter => {
+
+        counterObserver.observe(
+            counter
+        );
+
+    }
+);
+
+
+/* =========================
+   卡片鼠标光效
+========================= */
+
+document
+.querySelectorAll(".card")
+.forEach(card => {
+
+    card.addEventListener(
+        "pointermove",
+        event => {
+
+            const rect =
+                card.getBoundingClientRect();
+
+
+            const x =
+                event.clientX -
+                rect.left;
+
+
+            const y =
+                event.clientY -
+                rect.top;
+
+
+            card.style.setProperty(
+                "--mx",
+                x + "px"
+            );
+
+
+            card.style.setProperty(
+                "--my",
+                y + "px"
+            );
+
+        }
+    );
+
+});
+
+
+/* =========================
+   粒子系统
+========================= */
+
+const canvas =
+    document.getElementById(
+        "particles"
+    );
+
+
+const ctx =
+    canvas.getContext("2d");
+
+
+let particles = [];
+
+
+function resizeCanvas(){
+
+    canvas.width =
+        window.innerWidth;
+
+    canvas.height =
+        window.innerHeight;
+
+}
+
+
+resizeCanvas();
+
+
+window.addEventListener(
+    "resize",
+    resizeCanvas
+);
+
+
+const particleCount =
+    window.innerWidth < 700
+        ? 35
+        : 70;
+
+
+for(
+    let i = 0;
+    i < particleCount;
+    i++
+){
+
+    particles.push({
+
+        x:
+            Math.random()
+            *
+            canvas.width,
+
+        y:
+            Math.random()
+            *
+            canvas.height,
+
+        vx:
+            (
+                Math.random()
+                -
+                .5
+            )
+            *
+            .35,
+
+        vy:
+            (
+                Math.random()
+                -
+                .5
+            )
+            *
+            .35,
+
+        size:
+            Math.random()
+            *
+            2
+            +
+            1
+
+    });
+
+}
+
+
+function drawParticles(){
+
+    ctx.clearRect(
+        0,
+        0,
+        canvas.width,
+        canvas.height
+    );
+
+
+    particles.forEach(
+        p => {
+
+            p.x += p.vx;
+
+            p.y += p.vy;
+
+
+            if(
+                p.x < 0 ||
+                p.x > canvas.width
+            ){
+
+                p.vx *= -1;
+
+            }
+
+
+            if(
+                p.y < 0 ||
+                p.y > canvas.height
+            ){
+
+                p.vy *= -1;
+
+            }
+
+
+            ctx.beginPath();
+
+
+            ctx.arc(
+                p.x,
+                p.y,
+                p.size,
+                0,
+                Math.PI * 2
+            );
+
+
+            ctx.fillStyle =
+                "rgba(165,180,252,.7)";
+
+
+            ctx.fill();
+
+        }
+    );
+
+
+    for(
+        let i = 0;
+        i < particles.length;
+        i++
+    ){
+
+        for(
+            let j = i + 1;
+            j < particles.length;
+            j++
+        ){
+
+            const a =
+                particles[i];
+
+            const b =
+                particles[j];
+
+
+            const dx =
+                a.x - b.x;
+
+            const dy =
+                a.y - b.y;
+
+
+            const distance =
+                Math.sqrt(
+                    dx * dx +
+                    dy * dy
+                );
+
+
+            if(
+                distance < 120
+            ){
+
+                ctx.beginPath();
+
+
+                ctx.moveTo(
+                    a.x,
+                    a.y
+                );
+
+
+                ctx.lineTo(
+                    b.x,
+                    b.y
+                );
+
+
+                ctx.strokeStyle =
+                    "rgba(129,140,248," +
+                    (
+                        1 -
+                        distance / 120
+                    )
+                    *
+                    .18 +
+                    ")";
+
+
+                ctx.lineWidth = .6;
+
+                ctx.stroke();
+
+            }
+
+        }
+
+    }
+
+
+    requestAnimationFrame(
+        drawParticles
+    );
+
+}
+
+
+drawParticles();
+
+
+/* =========================
+   返回顶部
+========================= */
+
+const topButton =
+    document.getElementById(
+        "top"
+    );
+
+
+window.addEventListener(
+    "scroll",
+    () => {
+
+        if(
+            window.scrollY > 500
+        ){
+
+            topButton.classList.add(
+                "show"
+            );
+
+        }else{
+
+            topButton.classList.remove(
+                "show"
+            );
+
+        }
+
+    }
+);
+
+
+topButton.addEventListener(
+    "click",
+    () => {
+
+        window.scrollTo({
+
+            top:0,
+
+            behavior:"smooth"
+
+        });
+
+    }
+);
+
+</script>
+
+
+</body>
+
+</html>l

@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>我的编程世界</title>
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+
+body{
+font-family:Arial,"Microsoft YaHei",sans-serif;
+color:white;
+min-height:100vh;
+background:
+radial-gradient(circle at 15% 20%,rgba(59,130,246,.3),transparent 35%),
+radial-gradient(circle at 85% 75%,rgba(139,92,246,.25),transparent 35%),
+linear-gradient(135deg,#020617,#0f172a,#1e1b4b);
+}
+
+nav{
+position:sticky;
+top:0;
+z-index:999;
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:16px 6%;
+background:rgba(2,6,23,.8);
+backdrop-filter:blur(18px);
+border-bottom:1px solid rgba(255,255,255,.08);
+}
+
+.logo{
+font-size:20px;
+font-weight:bold;
+white-space:nowrap;
+}
+
+.nav-links{
+display:flex;
+gap:18px;
+overflow-x:auto;
+scrollbar-width:none;
+}
+
+.nav-links::-webkit-scrollbar{display:none}
+
+.nav-links a{
+color:#cbd5e1;
+text-decoration:none;
+font-size:14px;
+white-space:nowrap;
+transition:.3s;
+}
+
+.nav-links a:hover,
+.nav-links a.active{
+color:#93c5fd;
+}
+
+.hero{
+text-align:center;
+padding:90px 20px 60px;
+}
+
+.badge{
+display:inline-block;
+padding:8px 16px;
+border-radius:30px;
+color:#93c5fd;
+background:rgba(59,130,246,.1);
+border:1px solid rgba(147,197,253,.2);
+margin-bottom:20px;
+}
+
+.hero h1{
+font-size:clamp(45px,9vw,80px);
+margin-bottom:20px;
+background:linear-gradient(90deg,#fff,#93c5fd,#c4b5fd);
+-webkit-background-clip:text;
+color:transparent;
+}
+
+.hero p{
+max-width:680px;
+margin:auto;
+color:#94a3b8;
+line-height:1.9;
+}
+
+.container{
+width:min(1100px,90%);
+margin:auto;
+}
+
+.stats{
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:18px;
+margin:30px 0 70px;
+}
+
+.stat{
+text-align:center;
+padding:25px;
+border-radius:20px;
+background:rgba(255,255,255,.05);
+border:1px solid rgba(255,255,255,.08);
+}
+
+.stat strong{
+display:block;
+font-size:35px;
+color:#93c5fd;
+}
+
+.stat span{
+color:#64748b;
+}
+
+.section{
+text-align:center;
+margin:70px 0 35px;
+}
+
+.section h2{
+font-size:35px;
+margin-bottom:10px;
+}
+
+.section p{
+color:#64748b;
+}
+
+.projects{
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:22px;
+}
+
+.project{
+padding:28px;
+border-radius:25px;
+background:rgba(255,255,255,.05);
+border:1px solid rgba(255,255,255,.08);
+transition:.4s;
+}
+
+.project:hover{
+transform:translateY(-8px);
+box-shadow:0 25px 50px rgba(0,0,0,.3);
+}
+
+.icon{
+font-size:50px;
+margin-bottom:18px;
+}
+
+.project h3{
+font-size:22px;
+margin-bottom:12px;
+}
+
+.project p{
+color:#94a3b8;
+line-height:1.8;
+margin-bottom:18px;
+}
+
+.tag{
+display:inline-block;
+padding:6px 11px;
+margin:3px;
+border-radius:20px;
+background:rgba(59,130,246,.12);
+color:#93c5fd;
+font-size:13px;
+}
+
+.terminal{
+margin:70px 0;
+border-radius:20px;
+overflow:hidden;
+background:#020617;
+border:1px solid rgba(255,255,255,.1);
+box-shadow:0 25px 60px rgba(0,0,0,.35);
+}
+
+.terminal-top{
+padding:14px 18px;
+background:#111827;
+color:#64748b;
+}
+
+.terminal-body{
+padding:25px;
+font-family:monospace;
+line-height:2;
+color:#94a3b8;
+overflow-x:auto;
+}
+
+.green{color:#86efac}
+.blue{color:#93c5fd}
+.purple{color:#c4b5fd}
+
+.timeline{
+max-width:750px;
+margin:auto;
+border-left:2px solid #3b82f6;
+padding-left:25px;
+}
+
+.item{
+padding:20px;
+margin-bottom:18px;
+border-radius:18px;
+background:rgba(255,255,255,.05);
+}
+
+.item strong{
+color:#93c5fd;
+}
+
+.item p{
+color:#94a3b8;
+margin-top:8px;
+line-height:1.7;
+}
+
+.goal{
+padding:35px;
+margin:70px 0;
+border-radius:25px;
+text-align:center;
+background:rgba(59,130,246,.06);
+border:1px solid rgba(147,197,253,.12);
+}
+
+.goal p{
+max-width:750px;
+margin:15px auto 0;
+color:#94a3b8;
+line-height:1.9;
+}
+
+.home{
+display:block;
+width:max-content;
+margin:60px auto;
+padding:13px 25px;
+border-radius:30px;
+text-decoration:none;
+color:white;
+background:linear-gradient(135deg,#2563eb,#7c3aed);
+}
+
+@media(max-width:800px){
+.projects{
+grid-template-columns:1fr;
+}
+.stats{
+grid-template-columns:1fr;
+}
+nav{
+padding:14px 5%;
+}
+}
+</style>
+</head>
+
+<body>
+
+<nav>
+<div class="logo">💻 编程世界</div>
+
+<div class="nav-links">
+<a href="index.html">首页</a>
+<a href="game.html">🎮 游戏</a>
+<a href="photo.html">📷 摄影</a>
+<a href="movie.html">🎬 电影</a>
+<a href="music.html">🎵 音乐</a>
+<a href="coding.html" class="active">💻 编程</a>
+</div>
+</nav>
+
+<section class="hero">
+
+<div class="badge">
+MY CODING JOURNEY
+</div>
+
+<h1>我的编程世界</h1>
+
+<p>
+从零开始学习编程，
+用代码创造属于自己的东西。
+这里记录我的学习过程、
+网站项目和未来想完成的作品。
+</p>
+
+</section>
+
+<main class="container">
+
+<section class="stats">
+
+<div class="stat">
+<strong>3</strong>
+<span>编程项目</span>
+</div>
+
+<div class="stat">
+<strong>4</strong>
+<span>学习方向</span>
+</div>
+
+<div class="stat">
+<strong>100%</strong>
+<span>学习动力</span>
+</div>
+
+</section>
+
+<div class="section">
+<h2>🚀 我的编程项目</h2>
+<p>从第一个网页开始，一点一点做出来</p>
+</div>
+
+<section class="projects">
+
+<article class="project">
+<div class="icon">🌐</div>
+<h3>我的个人网站</h3>
+<p>
+使用 HTML、CSS 和 JavaScript
+制作属于自己的兴趣爱好网站。
+</p>
+<span class="tag">HTML</span>
+<span class="tag">CSS</span>
+<span class="tag">JavaScript</span>
+</article>
+
+<article class="project">
+<div class="icon">🐾</div>
+<h3>手机桌面宠物</h3>
+<p>
+尝试制作一个 Android
+桌面宠物项目。
+</p>
+<span class="tag">Android</span>
+<span class="tag">Java</span>
+<span class="tag">UI</span>
+</article>
+
+<article class="project">
+<div class="icon">✨</div>
+<h3>未来项目</h3>
+<p>
+这里留给未来的自己，
+记录下一个真正完成的作品。
+</p>
+<span class="tag">Learning</span>
+<span class="tag">Future</span>
+<span class="tag">Coding</span>
+</article>
+
+</section>
+
+<section class="terminal">
+
+<div class="terminal-top">
+● ● ● &nbsp; my-coding-journey
+</div>
+
+<div class="terminal-body">
+
+<div>
+<span class="green">user@my-website</span>:<span class="blue">~</span>$ whoami
+</div>
+
+<div>一个正在学习编程的人</div>
+
+<br>
+
+<div>
+<span class="green">user@my-website</span>:<span class="blue">~</span>$ skills
+</div>
+
+<div>HTML · CSS · JavaScript</div>
+
+<br>
+
+<div>
+<span class="green">user@my-website</span>:<span class="blue">~</span>$ goal
+</div>
+
+<div class="purple">
+build something I can be proud of.
+</div>
+
+<br>
+
+<div>
+<span class="green">user@my-website</span>:<span class="blue">~</span>$ status
+</div>
+
+<div>
+<span class="green">●</span> Learning...
+</div>
+
+</div>
+
+</section>
+
+<div class="section">
+<h2>🧭 我的学习路线</h2>
+</div>
+
+<section class="timeline">
+
+<div class="item">
+<strong>01 · HTML</strong>
+<p>学习网页的基本结构。</p>
+</div>
+
+<div class="item">
+<strong>02 · CSS</strong>
+<p>学习颜色、布局、动画和响应式设计。</p>
+</div>
+
+<div class="item">
+<strong>03 · JavaScript</strong>
+<p>学习让网页产生互动。</p>
+</div>
+
+<div class="item">
+<strong>04 · 更大的项目</strong>
+<p>把学到的知识组合起来，制作真正属于自己的作品。</p>
+</div>
+
+</section>
+
+<section class="goal">
+<h2>🚀 我的目标</h2>
+<p>
+从零开始，一点一点学习编程。
+每天多写一点代码，
+最终把脑海里的想法变成真正可以运行的作品。
+</p>
+</section>
+
+<a href="index.html" class="home">
+← 返回我的兴趣世界
+</a>
+
+</main>
+
+</body>
+</html>

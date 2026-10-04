@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>我的电影世界</title>
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+
+body{
+font-family:Arial,"Microsoft YaHei",sans-serif;
+color:white;
+min-height:100vh;
+background:
+radial-gradient(circle at 20% 20%,rgba(225,29,72,.3),transparent 35%),
+radial-gradient(circle at 80% 80%,rgba(124,58,237,.25),transparent 35%),
+linear-gradient(135deg,#18020a,#3f0d25,#09001f)
+}
+
+nav{
+position:sticky;
+top:0;
+z-index:999;
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:16px 6%;
+background:rgba(2,6,23,.8);
+backdrop-filter:blur(18px);
+border-bottom:1px solid rgba(255,255,255,.08)
+}
+
+.logo{font-size:20px;font-weight:bold;white-space:nowrap}
+
+.nav-links{
+display:flex;
+gap:18px;
+overflow-x:auto;
+scrollbar-width:none
+}
+
+.nav-links::-webkit-scrollbar{display:none}
+
+.nav-links a{
+color:#cbd5e1;
+text-decoration:none;
+font-size:14px;
+white-space:nowrap
+}
+
+.nav-links a:hover,
+.nav-links a.active{
+color:#fda4af
+}
+
+.hero{
+text-align:center;
+padding:90px 20px 50px
+}
+
+.hero h1{
+font-size:clamp(45px,9vw,80px);
+margin-bottom:20px;
+background:linear-gradient(90deg,#fff,#fda4af,#c4b5fd);
+-webkit-background-clip:text;
+color:transparent
+}
+
+.hero p{
+max-width:650px;
+margin:auto;
+color:#94a3b8;
+line-height:1.9
+}
+
+.container{
+width:min(1100px,90%);
+margin:auto
+}
+
+.movies{
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:25px;
+margin-top:50px
+}
+
+.movie{
+min-height:390px;
+padding:30px;
+display:flex;
+flex-direction:column;
+justify-content:flex-end;
+border-radius:25px;
+background:
+linear-gradient(160deg,rgba(225,29,72,.25),rgba(15,23,42,.9));
+border:1px solid rgba(255,255,255,.08);
+transition:.4s
+}
+
+.movie:hover{
+transform:translateY(-10px);
+box-shadow:0 25px 50px rgba(0,0,0,.4)
+}
+
+.icon{
+font-size:70px;
+margin-bottom:auto
+}
+
+.movie h2{margin-bottom:10px}
+
+.movie p{
+color:#94a3b8;
+line-height:1.7;
+margin-bottom:18px
+}
+
+.tag{
+display:inline-block;
+padding:6px 11px;
+border-radius:20px;
+background:rgba(244,63,94,.12);
+color:#fda4af;
+font-size:13px;
+margin-right:5px
+}
+
+.section{
+text-align:center;
+margin:80px 0 35px
+}
+
+.section h2{font-size:35px}
+
+.timeline{
+max-width:750px;
+margin:auto;
+border-left:2px solid #e11d48;
+padding-left:25px
+}
+
+.item{
+padding:20px;
+margin-bottom:18px;
+border-radius:18px;
+background:rgba(255,255,255,.05)
+}
+
+.item strong{color:#fda4af}
+.item p{color:#94a3b8;margin-top:8px;line-height:1.7}
+
+.home{
+display:block;
+width:max-content;
+margin:70px auto 50px;
+padding:13px 25px;
+border-radius:30px;
+text-decoration:none;
+color:white;
+background:linear-gradient(135deg,#e11d48,#7c3aed)
+}
+
+@media(max-width:750px){
+.movies{grid-template-columns:1fr}
+nav{padding:14px 5%}
+}
+</style>
+</head>
+
+<body>
+
+<nav>
+<div class="logo">🎬 电影世界</div>
+
+<div class="nav-links">
+<a href="index.html">首页</a>
+<a href="game.html">🎮 游戏</a>
+<a href="photo.html">📷 摄影</a>
+<a href="movie.html" class="active">🎬 电影</a>
+<a href="music.html">🎵 音乐</a>
+<a href="coding.html">💻 编程</a>
+</div>
+</nav>
+
+<section class="hero">
+<h1>我的电影世界</h1>
+<p>
+电影是一扇窗口。
+通过电影，我可以看到不同的人、
+不同的故事和不同的人生。
+</p>
+</section>
+
+<main class="container">
+
+<div class="movies">
+
+<article class="movie">
+<div class="icon">🐕</div>
+<h2>《一条狗的使命》</h2>
+<p>关于陪伴、成长与人与动物之间感情的故事。</p>
+<span class="tag">剧情</span>
+<span class="tag">温情</span>
+</article>
+
+<article class="movie">
+<div class="icon">⚔️</div>
+<h2>《攻击斗士》</h2>
+<p>记录我喜欢的动作与战斗题材作品。</p>
+<span class="tag">动作</span>
+<span class="tag">战斗</span>
+</article>
+
+<article class="movie">
+<div class="icon">🐺</div>
+<h2>《豺狼的日子》</h2>
+<p>紧张的故事节奏与充满悬念的剧情。</p>
+<span class="tag">悬疑</span>
+<span class="tag">惊险</span>
+</article>
+
+</div>
+
+<div class="section">
+<h2>🎞️ 我的观影记录</h2>
+</div>
+
+<section class="timeline">
+
+<div class="item">
+<strong>01 · 一条狗的使命</strong>
+<p>一部让我关注陪伴与情感的电影。</p>
+</div>
+
+<div class="item">
+<strong>02 · 攻击斗士</strong>
+<p>动作题材带来的紧张与刺激。</p>
+</div>
+
+<div class="item">
+<strong>03 · 豺狼的日子</strong>
+<p>喜欢它的悬疑感和故事推进。</p>
+</div>
+
+</section>
+
+<a href="index.html" class="home">
+← 返回我的兴趣世界
+</a>
+
+</main>
+
+</body>
+</html>

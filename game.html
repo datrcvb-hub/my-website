@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>我的游戏世界</title>
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+
+body{
+font-family:Arial,"Microsoft YaHei",sans-serif;
+color:#fff;
+min-height:100vh;
+background:
+radial-gradient(circle at 20% 20%,rgba(124,58,237,.3),transparent 35%),
+radial-gradient(circle at 80% 80%,rgba(37,99,235,.25),transparent 35%),
+linear-gradient(135deg,#09001f,#17113b,#020617);
+}
+
+nav{
+position:sticky;
+top:0;
+z-index:999;
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:16px 6%;
+background:rgba(2,6,23,.8);
+backdrop-filter:blur(18px);
+border-bottom:1px solid rgba(255,255,255,.08);
+}
+
+.logo{
+font-size:20px;
+font-weight:bold;
+white-space:nowrap;
+}
+
+.nav-links{
+display:flex;
+gap:18px;
+overflow-x:auto;
+scrollbar-width:none;
+}
+
+.nav-links::-webkit-scrollbar{display:none}
+
+.nav-links a{
+color:#cbd5e1;
+text-decoration:none;
+font-size:14px;
+white-space:nowrap;
+transition:.3s;
+}
+
+.nav-links a:hover,
+.nav-links a.active{
+color:#c4b5fd;
+}
+
+.hero{
+text-align:center;
+padding:100px 20px 60px;
+}
+
+.hero h1{
+font-size:clamp(48px,9vw,80px);
+background:linear-gradient(90deg,#fff,#c4b5fd,#60a5fa);
+-webkit-background-clip:text;
+color:transparent;
+margin-bottom:20px;
+}
+
+.hero p{
+max-width:650px;
+margin:auto;
+color:#94a3b8;
+line-height:1.9;
+}
+
+.container{
+width:min(1100px,90%);
+margin:auto;
+}
+
+.stats{
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:18px;
+margin:30px 0 70px;
+}
+
+.stat{
+text-align:center;
+padding:25px;
+border-radius:20px;
+background:rgba(255,255,255,.05);
+border:1px solid rgba(255,255,255,.08);
+}
+
+.stat strong{
+display:block;
+font-size:35px;
+color:#c4b5fd;
+}
+
+.stat span{
+color:#64748b;
+}
+
+.games{
+display:grid;
+grid-template-columns:repeat(2,1fr);
+gap:25px;
+}
+
+.game{
+padding:30px;
+border-radius:25px;
+background:rgba(255,255,255,.05);
+border:1px solid rgba(255,255,255,.08);
+transition:.4s;
+}
+
+.game:hover{
+transform:translateY(-8px);
+box-shadow:0 25px 50px rgba(0,0,0,.3);
+}
+
+.game-icon{
+font-size:55px;
+margin-bottom:20px;
+}
+
+.game h2{
+margin-bottom:12px;
+}
+
+.game p{
+color:#94a3b8;
+line-height:1.8;
+margin-bottom:18px;
+}
+
+.tags{
+display:flex;
+gap:8px;
+flex-wrap:wrap;
+}
+
+.tag{
+padding:6px 12px;
+border-radius:20px;
+background:rgba(124,58,237,.15);
+color:#c4b5fd;
+font-size:13px;
+}
+
+.section{
+text-align:center;
+margin:80px 0 35px;
+}
+
+.section h2{
+font-size:35px;
+margin-bottom:10px;
+}
+
+.section p{
+color:#64748b;
+}
+
+.timeline{
+border-left:2px solid #7c3aed;
+margin:0 auto 80px;
+max-width:750px;
+padding-left:25px;
+}
+
+.timeline-item{
+margin-bottom:25px;
+padding:20px;
+border-radius:18px;
+background:rgba(255,255,255,.05);
+}
+
+.timeline-item strong{
+color:#c4b5fd;
+}
+
+.timeline-item p{
+color:#94a3b8;
+margin-top:8px;
+line-height:1.7;
+}
+
+.home{
+display:block;
+width:max-content;
+margin:60px auto;
+padding:13px 25px;
+border-radius:30px;
+text-decoration:none;
+color:white;
+background:linear-gradient(135deg,#7c3aed,#2563eb);
+}
+
+@media(max-width:700px){
+.stats{grid-template-columns:1fr}
+.games{grid-template-columns:1fr}
+nav{padding:14px 5%}
+}
+</style>
+</head>
+
+<body>
+
+<nav>
+<div class="logo">🎮 游戏世界</div>
+
+<div class="nav-links">
+<a href="index.html">首页</a>
+<a href="game.html" class="active">🎮 游戏</a>
+<a href="photo.html">📷 摄影</a>
+<a href="movie.html">🎬 电影</a>
+<a href="music.html">🎵 音乐</a>
+<a href="coding.html">💻 编程</a>
+</div>
+</nav>
+
+<section class="hero">
+<h1>我的游戏世界</h1>
+<p>
+游戏是我探索另一个世界的方式。
+这里记录我喜欢的游戏，以及属于自己的游戏回忆。
+</p>
+</section>
+
+<main class="container">
+
+<section class="stats">
+<div class="stat">
+<strong>4</strong>
+<span>喜欢的游戏</span>
+</div>
+
+<div class="stat">
+<strong>4</strong>
+<span>游戏类型</span>
+</div>
+
+<div class="stat">
+<strong>∞</strong>
+<span>游戏时间</span>
+</div>
+</section>
+
+<div class="section">
+<h2>🎮 我的游戏收藏</h2>
+<p>我喜欢的四个游戏</p>
+</div>
+
+<section class="games">
+
+<article class="game">
+<div class="game-icon">⛏️</div>
+<h2>Minecraft</h2>
+<p>一个可以自由创造、探索和冒险的沙盒世界。</p>
+<div class="tags">
+<span class="tag">沙盒</span>
+<span class="tag">建造</span>
+<span class="tag">生存</span>
+</div>
+</article>
+
+<article class="game">
+<div class="game-icon">✨</div>
+<h2>原神</h2>
+<p>在开放世界中探索不同地区，体验角色与故事。</p>
+<div class="tags">
+<span class="tag">RPG</span>
+<span class="tag">开放世界</span>
+<span class="tag">探索</span>
+</div>
+</article>
+
+<article class="game">
+<div class="game-icon">⚔️</div>
+<h2>王者荣耀</h2>
+<p>和队友一起进行多人对战，体验团队配合。</p>
+<div class="tags">
+<span class="tag">MOBA</span>
+<span class="tag">竞技</span>
+<span class="tag">多人</span>
+</div>
+</article>
+
+<article class="game">
+<div class="game-icon">🎯</div>
+<h2>暗区突围</h2>
+<p>进入危险区域收集资源，在战局中完成撤离。</p>
+<div class="tags">
+<span class="tag">FPS</span>
+<span class="tag">战术</span>
+<span class="tag">射击</span>
+</div>
+</article>
+
+</section>
+
+<div class="section">
+<h2>🏆 我的游戏记录</h2>
+<p>以后可以继续添加更多内容</p>
+</div>
+
+<section class="timeline">
+
+<div class="timeline-item">
+<strong>01 · 第一次接触游戏</strong>
+<p>记录自己第一次真正喜欢上的游戏。</p>
+</div>
+
+<div class="timeline-item">
+<strong>02 · 最喜欢的游戏</strong>
+<p>记录那些陪伴自己时间最长的游戏。</p>
+</div>
+
+<div class="timeline-item">
+<strong>03 · 未来</strong>
+<p>继续探索更多有趣的游戏世界。</p>
+</div>
+
+</section>
+
+<a href="index.html" class="home">← 返回我的兴趣世界</a>
+
+</main>
+
+</body>
+</html>
